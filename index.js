@@ -10,7 +10,8 @@ notes.create("Sample 3", "Author 2");
 notes.create("Sample 4", "Author 1");
 
 app.get("/api/notes", (req, res) => {
-  res.json(notes.readAll());
+  const author = req.query.author;
+  res.json(notes.readAll(author));
 });
 
 app.listen(port, () => {
