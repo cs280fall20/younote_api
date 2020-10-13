@@ -30,6 +30,26 @@ class NoteDao {
   read(id) {
     return this.notes.find((note) => note._id === id);
   }
+
+  update(id, content, author) {
+    const index = this.notes.findIndex((note) => note._id === id);
+    if (index !== -1) {
+      this.notes[index].content = content;
+      this.notes[index].author = author;
+      return this.notes[index];
+    }
+    return null;
+  }
+
+  delete(id) {
+    const index = this.notes.findIndex((note) => note._id === id);
+    if (index !== -1) {
+      const note = this.notes[index];
+      this.notes.splice(index, 1);
+      return note;
+    }
+    return null;
+  }
 }
 
 module.exports = NoteDao;

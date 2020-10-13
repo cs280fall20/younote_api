@@ -11,6 +11,9 @@ notes.create("Sample 4", "Author 1");
 console.log(notes.read(2));
 console.log(notes.readAll("Author 1"));
 console.log(notes.readAll());
+console.log(notes.update(0, "Sample 0", "Author 3"));
+console.log(notes.delete(1));
+console.log(notes.readAll());
 
 app.listen(port, () => {
   console.log(`Server is listening on http://localhost:${port}`);
