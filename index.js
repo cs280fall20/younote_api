@@ -1,13 +1,16 @@
-const Note = require("./model/Note.js");
+const NoteDao = require("./model/NoteDao.js");
 const express = require("express");
 const app = express();
 const port = 4567;
 
-const notes = [];
-notes.push(new Note("Sample 1", "Author 1"));
-notes.push(new Note("Sample 2", "Author 2"));
-notes.push(new Note("Sample 3", "Author 3"));
-console.log(notes);
+const notes = new NoteDao();
+notes.create("Sample 1", "Author 1");
+notes.create("Sample 2", "Author 2");
+notes.create("Sample 3", "Author 2");
+notes.create("Sample 4", "Author 1");
+console.log(notes.read(2));
+console.log(notes.readAll("Author 1"));
+console.log(notes.readAll());
 
 app.listen(port, () => {
   console.log(`Server is listening on http://localhost:${port}`);

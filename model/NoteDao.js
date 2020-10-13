@@ -19,6 +19,17 @@ class NoteDao {
     this.notes.push(note);
     return note;
   }
+
+  readAll(author = "") {
+    if (author !== "") {
+      return this.notes.filter((note) => note.author === author);
+    }
+    return this.notes;
+  }
+
+  read(id) {
+    return this.notes.find((note) => note._id === id);
+  }
 }
 
 module.exports = NoteDao;
