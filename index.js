@@ -14,6 +14,11 @@ app.get("/api/notes", (req, res) => {
   res.json(notes.readAll(author));
 });
 
+app.get("/api/notes/:id", (req, res) => {
+  const id = Number.parseInt(req.params.id);
+  res.json(notes.read(id));
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on http://localhost:${port}`);
 });
