@@ -9,6 +9,8 @@ notes.create("Sample 2", "Author 2");
 notes.create("Sample 3", "Author 2");
 notes.create("Sample 4", "Author 1");
 
+app.use(express.json());
+
 app.get("/api/notes", (req, res) => {
   const author = req.query.author;
   res.json(notes.readAll(author));
@@ -22,3 +24,11 @@ app.get("/api/notes/:id", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is listening on http://localhost:${port}`);
 });
+
+app.post("/api/notes", (req, res) => {
+  const content = req.body.content;
+  const author = req.body.author;
+  const note = notes.create(content, author);
+  res.status(201).json(note);
+});
+
