@@ -36,3 +36,13 @@ app.post("/api/notes", (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
+app.delete("/api/notes/:id", (req, res) => {
+  const id = Number.parseInt(req.params.id);
+  const note = notes.delete(id);
+  if (note) {
+    res.json(note);
+  } else {
+    res.status(404).send("Resource not found!");
+  }
+});
