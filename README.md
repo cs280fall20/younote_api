@@ -1,10 +1,10 @@
-# YouNote API (Part I)
+# YouNote API
 
 We are going to build the API for a note taking application called YouNote.
 
 In our API, users will be able to create notes, as well as read, update, and delete the notes they’ve created.
 
-This repository contains the first part of our journey which includes a model for `Note`, a data access object `NoteDao` and the following API endpoints:
+This repository contains a model for `Note`, a data access object `NoteDao` and the following API endpoints:
 
 * GET `/api/notes`
 * GET `/api/notes?author=author_name`
