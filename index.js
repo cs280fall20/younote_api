@@ -21,10 +21,6 @@ app.get("/api/notes/:id", (req, res) => {
   res.json(notes.read(id));
 });
 
-app.listen(port, () => {
-  console.log(`Server is listening on http://localhost:${port}`);
-});
-
 app.post("/api/notes", (req, res) => {
   const content = req.body.content;
   const author = req.body.author;
@@ -45,4 +41,25 @@ app.delete("/api/notes/:id", (req, res) => {
   } else {
     res.status(404).send("Resource not found!");
   }
+});
+
+app.put("/api/notes/:id", (req, res) => {
+  const id = Number.parseInt(req.params.id);
+  const content = req.body.content;
+  const author = req.body.author;
+
+  try {
+    const note = notes.update(id, content, author);
+    if (note) {
+      res.json(note);
+    } else {
+      res.status(404).send("Resource not found!");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server is listening on http://localhost:${port}`);
 });

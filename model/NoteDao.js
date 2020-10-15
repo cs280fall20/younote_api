@@ -35,6 +35,10 @@ class NoteDao {
   }
 
   update(id, content, author) {
+    if (!content || !author) {
+      throw new Error("Invalid attributes");
+    }
+
     const index = this.notes.findIndex((note) => note._id === id);
     if (index !== -1) {
       this.notes[index].content = content;
