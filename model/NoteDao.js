@@ -14,6 +14,9 @@ class NoteDao {
   }
 
   create(content, author) {
+    if (!content || !author) {
+      throw new Error("Invalid attributes");
+    }
     const note = new Note(content, author);
     note._id = this.nextID();
     this.notes.push(note);

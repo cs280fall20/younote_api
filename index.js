@@ -28,7 +28,11 @@ app.listen(port, () => {
 app.post("/api/notes", (req, res) => {
   const content = req.body.content;
   const author = req.body.author;
-  const note = notes.create(content, author);
-  res.status(201).json(note);
-});
 
+  try {
+    const note = notes.create(content, author);
+    res.status(201).json(note);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
