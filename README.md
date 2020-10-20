@@ -9,6 +9,9 @@ This repository contains a model for `Note`, a data access object `NoteDao` and 
 * GET `/api/notes`
 * GET `/api/notes?author=author_name`
 * GET `/api/notes/:noteId`
+* POST `/api/notes`
+* PUT `/api/notes/:noteId`
+* DELETE `/api/notes/:noteId`
 
 Look at `index.js` for more details.
 
